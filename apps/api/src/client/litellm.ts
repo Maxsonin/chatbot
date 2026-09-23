@@ -37,12 +37,9 @@ export async function createResponseStream(
       model: request.model,
       input: request.input,
       stream: true,
-
-      ...(request.think && {
-        reasoning: {
-          effort: 'medium',
-        },
-      }),
+      reasoning: {
+        effort: request.think ? 'medium' : 'none',
+      },
     }),
     signal,
   });
